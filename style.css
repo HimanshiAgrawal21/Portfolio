@@ -1,0 +1,317 @@
+:root{
+  /* Colours */
+  --colour-bg: #f1ebeb;
+  --colour-text: #363636;
+  --colour-nav-text: #857047;
+  --colour-nav-bg: #ffffff;
+  --colour-accent-red: #721c1c;
+  --colour-accent-green: #3f7e01;
+  --colour-link: #2126D9;
+  --colour-surface:#F0EEE9; 
+
+  /* Typography */
+  --font-base: 'DM Sans', sans-serif;
+
+  /* Fluid type scale*/
+  --text-xs: clamp(0.625rem, 0.5341rem + 0.4545vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.8295rem + 0.2273vw, 1rem);    /* hint: around 14px to 16px */
+  --text-base: clamp(1.125rem, 1.0795rem + 0.2273vw, 1.25rem);  /* hint: 18px to 20px — your body text */
+  --text-md: clamp(1.25rem, 1.1591rem + 0.4545vw, 1.5rem);   /* hint: 20px to 24px */
+  --text-lg: clamp(1.5rem, 1.3182rem + 0.9091vw, 2rem);    /* hint: 24px to 32px */
+  --text-xl: clamp(2rem, 1.6364rem + 1.8182vw, 3rem);    /* hint: 32px to 48px */
+  --text-2xl: clamp(3rem, 2.4545rem + 2.7273vw, 4.5rem);
+
+  /* Fluid space scale */ 
+  --space-xs: clamp(0.875rem, 0.8523rem + 0.1136vw, 0.9375rem);
+  --space-s: clamp(1.125rem, 1.0795rem + 0.2273vw, 1.25rem);
+  --space-m: clamp(1.6875rem, 1.6193rem + 0.3409vw, 1.875rem);
+  --space-m-l: clamp(1.5rem, 1.15rem + 1.6vw, 2.5rem);
+  --space-l: clamp(2.25rem, 2.1591rem + 0.4545vw, 2.5rem);
+  --space-xl: clamp(3.375rem, 3.2386rem + 0.6818vw, 3.75rem);
+  --space-2xl: clamp(4.5rem, 4.3182rem + 0.9091vw, 5rem);
+  --space-3xl: clamp(6.75rem, 6.4773rem + 1.3636vw, 7.5rem);
+  
+  --content-padding: var(--space-l);
+  --max-width: 80rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  /* min-height: 100vh; I wanna see if not using this will effect something */
+  font-size: var(--text-base);
+  font-family: var(--font-base);
+  background-color: var(--colour-bg);
+  color: var(--colour-text);
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+}
+.constrain{
+  max-width: var(--max-width);
+  width: 100%;
+  margin: 0 auto;
+  padding-inline: var(--space-m-l);
+}
+section{
+ padding-block: var(--space-xl);
+}
+h2{
+  color: var(--colour-nav-text);
+  font-size: var(--text-xl);
+
+}
+/* main{
+  flex: 1;
+} again if something will get effected then i will uncomment this */
+
+.skip-link {
+  position: absolute;
+  top: -10000%;
+  left: 0;
+}
+.skip-link:focus {
+  top: 0;
+}
+.nav-bar{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border-bottom: 1px solid black; */
+  background-color: var(--colour-nav-bg);
+}
+.logo{
+  text-decoration: none;
+  text-wrap: nowrap;
+  font-size: var(--text-lg); /* min is 24px and max is 32px i think it doesn't make much sense if we want a 350px screen width to have atlease 24px then a 1600px screen shouldn't get 32px i'll take care next time to not make such tight values.*/
+  color: var(--colour-link);
+  font-weight: 600;
+}
+.nav-toggle{
+  font-size: var(--text-md);
+  background-color: var(--colour-bg);
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+}
+.visually-hidden {
+  clip-path: inset(100%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap; 
+  width: 1px;
+}
+.nav-list{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: var(--colour-nav-bg);
+  list-style-type: none;
+  color: var(--colour-text);
+}
+.nav-list[hidden] {
+  display: none;
+}
+.nav-list a{
+  display: block;
+  font-weight: 700;
+  padding: var(--space-xs);
+  text-decoration: none;
+  color: var(--colour-nav-text);
+  font-size: var(--text-md);
+}
+ @media (min-width: 48rem) {
+  .nav-toggle{
+    display: none;
+  }
+  .nav-list, .nav-list[hidden]{
+    display: flex;
+    position: static;
+    flex-direction: row;
+    justify-content: end;
+  }
+}
+.hero{
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.hero h1{
+  font-size: var(--text-2xl);
+  text-align: center;
+}
+.hero p{
+  text-align: center;
+  font-size: var(--text-md);
+}
+.red{
+  color: var(--colour-accent-red);
+}
+.green{
+  color: var(--colour-accent-green);
+}
+@media (min-width: 48rem) {
+  .hero h1{
+    width: 80%;
+
+  }
+}
+
+.about-layout{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between; 
+  gap: var(--space-2xl);
+
+}
+.about-text{
+  /* max-width: 55vw; */
+  line-height: 1.8;
+  font-size: var(--text-md);
+  margin-top: var(--space-m);
+}
+.about-image{
+  margin-top: var(--space-m);
+  order: -1;
+  flex-shrink: 0;
+  /* text-align: start; */
+  width: 300px;
+  overflow: hidden;
+}
+.about-image img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top center;
+}
+
+@media(min-width: 48rem){
+  .about-layout{
+    display: flex;
+    flex-direction: row;
+  }
+  .about-image{
+    order: 1;
+    /* width: 400px; */
+  }
+  .about-text{
+    flex: 1;
+  }
+}
+.card-layout{
+  padding: var(--space-m);
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+}
+.card-layout li{
+  display: flex;
+}
+
+.card{
+  flex: 1;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-m);
+  align-items: center;
+  border-radius: 5px;
+  background-color: var(--colour-nav-bg);
+}
+.card-img{
+  max-width: 300px;
+  width: 100%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+}
+.card-img img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+.card p{
+  line-height: 1.3;
+  font-weight: 500;
+  font-size: var(--text-base);
+  /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+  margin-block:  var(--space-xs);
+}
+.detail{
+  margin-top: auto;
+  display: inline-block;
+  padding: var(--space-xs);
+  border: 2px solid transparent;
+  background-color: var(--colour-surface);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--colour-nav-text);
+  text-decoration: none;
+}
+.detail:hover{
+  color: var(--colour-bg);
+  background-color: var(--colour-nav-text);
+}
+
+@media(min-width: 35rem) {
+  .card-layout{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media(min-width: 60rem) {
+  .card-layout{
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.skills dl{
+  margin-top: var(--space-m);
+}
+.skills dt{
+  font-size: var(--text-lg);
+}
+.skills dd{
+  
+  margin-block: var(--space-s);
+}
+@media (min-width: 48rem) {
+  .skills dl{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    row-gap: var(--space-m);  
+  }
+  .skills dd{
+    margin-block: 0;
+  }
+  .skills dt{
+    align-self: baseline;
+  }}
+
+.contact p{
+  margin-top: var(--space-m);
+}
+.contact-email{
+  display: inline-block;
+  margin-top: var(--space-xs);
+}
+
+footer{
+  margin-top: var(--space-m);
+  text-align: center;
+  font-size: var(--text-xs);
+}
