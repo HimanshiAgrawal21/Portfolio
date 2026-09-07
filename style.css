@@ -14,11 +14,11 @@
 
   /* Fluid type scale*/
   --text-xs: clamp(0.625rem, 0.5341rem + 0.4545vw, 0.875rem);
-  --text-sm: clamp(0.875rem, 0.8295rem + 0.2273vw, 1rem);    /* hint: around 14px to 16px */
-  --text-base: clamp(1.125rem, 1.0795rem + 0.2273vw, 1.25rem);  /* hint: 18px to 20px — your body text */
-  --text-md: clamp(1.25rem, 1.1591rem + 0.4545vw, 1.5rem);   /* hint: 20px to 24px */
-  --text-lg: clamp(1.5rem, 1.3182rem + 0.9091vw, 2rem);    /* hint: 24px to 32px */
-  --text-xl: clamp(2rem, 1.6364rem + 1.8182vw, 3rem);    /* hint: 32px to 48px */
+  --text-sm: clamp(0.875rem, 0.8295rem + 0.2273vw, 1rem);    
+  --text-base: clamp(1.125rem, 1.0795rem + 0.2273vw, 1.25rem);  
+  --text-md: clamp(1.25rem, 1.1591rem + 0.4545vw, 1.5rem);   
+  --text-lg: clamp(1.5rem, 1.3182rem + 0.9091vw, 2rem);  
+  --text-xl: clamp(2rem, 1.6364rem + 1.8182vw, 3rem);    
   --text-2xl: clamp(3rem, 2.4545rem + 2.7273vw, 4.5rem);
 
   /* Fluid space scale */ 
@@ -41,7 +41,7 @@
   box-sizing: border-box;
 }
 body{
-  /* min-height: 100vh; I wanna see if not using this will effect something */
+  min-height: 100vh;  
   font-size: var(--text-base);
   font-family: var(--font-base);
   background-color: var(--colour-bg);
@@ -62,12 +62,7 @@ section{
 h2{
   color: var(--colour-nav-text);
   font-size: var(--text-xl);
-
 }
-/* main{
-  flex: 1;
-} again if something will get effected then i will uncomment this */
-
 .skip-link {
   position: absolute;
   top: -10000%;
@@ -76,22 +71,21 @@ h2{
 .skip-link:focus {
   top: 0;
 }
-.nav-bar{
+.navbar{
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* border-bottom: 1px solid black; */
   background-color: var(--colour-nav-bg);
 }
-.logo{
+.navbar__logo{
   text-decoration: none;
   text-wrap: nowrap;
-  font-size: var(--text-lg); /* min is 24px and max is 32px i think it doesn't make much sense if we want a 350px screen width to have atlease 24px then a 1600px screen shouldn't get 32px i'll take care next time to not make such tight values.*/
+  font-size: var(--text-lg);
   color: var(--colour-link);
   font-weight: 600;
 }
-.nav-toggle{
+.navbar__toggle{
   font-size: var(--text-md);
   background-color: var(--colour-bg);
   border: none;
@@ -103,10 +97,9 @@ h2{
   height: 1px;
   overflow: hidden;
   position: absolute;
-  white-space: nowrap; 
   width: 1px;
 }
-.nav-list{
+.navbar__list{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -114,35 +107,50 @@ h2{
   position: absolute;
   top: 100%;
   left: 0;
+  /* gap: var(--space-m); */
   width: 100%;
   background-color: var(--colour-nav-bg);
   list-style-type: none;
   color: var(--colour-text);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
 }
-.nav-list[hidden] {
-  display: none;
+.navbar__list.is-open{
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
-.nav-list a{
-  display: block;
-  font-weight: 700;
+.navbar__listitem{
   padding: var(--space-xs);
-  text-decoration: none;
+  display: block;
+  font-weight: 600;
+
+}
+.navbar__listitem a{
   color: var(--colour-nav-text);
-  font-size: var(--text-md);
+  font-size: var(--text-md);  
+  text-decoration: none;
+
 }
  @media (min-width: 48rem) {
-  .nav-toggle{
+  .navbar__toggle{
     display: none;
   }
-  .nav-list, .nav-list[hidden]{
+  .navbar__list{
     display: flex;
     position: static;
     flex-direction: row;
-    justify-content: end;
+    justify-content: flex-end;
+    align-items: center;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
   }
 }
 .hero{
-  min-height: 80vh;
+  min-height: 80dvh;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -156,20 +164,18 @@ h2{
   text-align: center;
   font-size: var(--text-md);
 }
-.red{
+.accent-a{
   color: var(--colour-accent-red);
 }
-.green{
+.accent-b{
   color: var(--colour-accent-green);
 }
 @media (min-width: 48rem) {
   .hero h1{
     width: 80%;
-
   }
 }
-
-.about-layout{
+.about__layout{
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -177,21 +183,21 @@ h2{
   gap: var(--space-2xl);
 
 }
-.about-text{
+.about__text{
   /* max-width: 55vw; */
   line-height: 1.8;
   font-size: var(--text-md);
   margin-top: var(--space-m);
 }
-.about-image{
+.about__image{
   margin-top: var(--space-m);
   order: -1;
-  flex-shrink: 0;
-  /* text-align: start; */
+  max-width: 100%;
+  aspect-ratio: 1/1;
   width: 300px;
   overflow: hidden;
 }
-.about-image img{
+.about__image img{
   width: 100%;
   height: 100%;
   display: block;
@@ -200,15 +206,15 @@ h2{
 }
 
 @media(min-width: 48rem){
-  .about-layout{
+  .about__layout{
     display: flex;
     flex-direction: row;
   }
-  .about-image{
+  .about__image{
     order: 1;
     /* width: 400px; */
   }
-  .about-text{
+  .about__text{
     flex: 1;
   }
 }
@@ -225,7 +231,7 @@ h2{
 
 .card{
   flex: 1;
-  border: 1px solid black;
+  border: 1px solid rgb(203, 183, 183);
   display: flex;
   flex-direction: column;
   padding: var(--space-m);
@@ -233,26 +239,29 @@ h2{
   border-radius: 5px;
   background-color: var(--colour-nav-bg);
 }
-.card-img{
+.card__img{
   max-width: 300px;
   width: 100%;
   aspect-ratio: 1/1;
   overflow: hidden;
 }
-.card-img img{
+.card__img img{
   width: 100%;
   height: 100%;
   display: block;
   object-fit: cover;
 }
+.card h3{
+  font-size: var(--text-md);
+  font-weight: 700;
+}
 .card p{
   line-height: 1.3;
   font-weight: 500;
   font-size: var(--text-base);
-  /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
   margin-block:  var(--space-xs);
 }
-.detail{
+.card__detail{
   margin-top: auto;
   display: inline-block;
   padding: var(--space-xs);
@@ -263,9 +272,13 @@ h2{
   color: var(--colour-nav-text);
   text-decoration: none;
 }
-.detail:hover{
+.card__detail:hover{
   color: var(--colour-bg);
   background-color: var(--colour-nav-text);
+}
+.card__detail--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 @media(min-width: 35rem) {
@@ -300,14 +313,21 @@ h2{
   }
   .skills dt{
     align-self: baseline;
-  }}
+  }
+}
 
 .contact p{
   margin-top: var(--space-m);
 }
-.contact-email{
+.contact__email{
   display: inline-block;
   margin-top: var(--space-xs);
+  text-decoration: none;
+  color: var(--colour-nav-text);
+  font-weight: 700;
+}
+.contact__email:hover{
+  color: var(--colour-link);
 }
 
 footer{

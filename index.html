@@ -3,26 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Himanshi Garg — self-taught frontend developer building accessible, semantic web experiences.">
+  <meta name="description" content="Himanshi Agrawal — self-taught frontend developer building accessible, semantic web experiences.">
   <title>Himanshi Agrawal — Frontend Developer</title>
   <link rel="stylesheet" href="style.css">
-  
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header >
-    <nav class="nav-bar constrain" aria-label="Primary">
-      <a class="logo" href="#">Himanshi Agrawal</a>
-      <button type="button" class="nav-toggle" aria-expanded="false"aria-controls="nav-list" >
+  <header>
+    <nav class="navbar constrain" aria-label="Primary">
+      <a class="navbar__logo" href="#">Himanshi Agrawal</a>
+      <button type="button" class="navbar__toggle" aria-expanded="false" aria-controls="navbar__list" >
         <span class="visually-hidden">Open navigation menu</span>
         <span aria-hidden="true">☰</span>
       </button>
-      <ul class="nav-list" hidden>
-        <li><a href="#about">About</a></li>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#contact">Contact</a></li>
+      <ul class="navbar__list" id="navbar__list">
+        <li class="navbar__listitem"><a href="#about">About</a></li>
+        <li class="navbar__listitem"><a href="#work">Work</a></li>
+        <li class="navbar__listitem"><a href="#skills">Skills</a></li>
+        <li class="navbar__listitem"><a href="#contact">Contact</a></li>
+
       </ul>
     </nav>
   </header>
@@ -30,19 +33,19 @@
   <main id="main-content">
 
     <section class="hero constrain">
-      <h1>I build <span class="red">accessible,</span> <span class="green">semantic</span> web experiences.</h1>
+      <h1>I build <strong class="accent-a">accessible,</strong> <strong class="accent-b">semantic</strong> web experiences.</h1>
       <p>With simplicity.</p>
     </section>
 
     <section class="about constrain" id="about">
       <h2>About</h2>
-      <div class="about-layout">
-        <div class="about-text">
-          <p>I am a self-taught web developer, learning web development for almost a year. I have built a couple of projects along the way and I am always working toward building better, more accessible experiences.</p>
+      <div class="about__layout">
+        <div class="about__text">
+          <p>I am a self-taught web developer, learning web development for more than a year. I have built a couple of projects along the way and I am always working toward building better, more accessible experiences.</p>
           <p>My first real-world project is a website for a Taekwondo academy — the sport I train at. I aspire to work with teams who care about the craft of the web as much as I do.</p>
         </div>
-        <div class="about-image">
-          <img src="Avatar-image.avif" alt="Himanshi Garg looking directly at the camera against a blue background" decoding="async" loading="lazy" width="200">
+        <div class="about__image">
+          <img src="Avatar-image.avif" alt="Illustrated placeholder avatar" decoding="async" loading="lazy" width="200">
         </div>
       </div>
     </section>
@@ -51,33 +54,33 @@
       <ul class="card-layout">
         <li>
           <article class="card">
-            <div class="card-img">
-              <img src="Avatar-image.avif" alt="Screenshot of FighterZone Taekwondo Academy homepage" decoding="async" loading="lazy">
+            <div class="card__img">
+              <img src="Avatar-image.avif" alt="Illustrated placeholder avatar" decoding="async" loading="lazy">
             </div>
             <h3>FighterZone Taekwondo Academy</h3>
             <p>A real-world project for a local martial arts academy. Built with high contrast, clean typography, and accessible markup.</p>
-            <a href="#" class="detail">View project</a>
+            <a href="https://himanshiagrawal21.github.io/Project/" class="card__detail" aria-label="View FighterZone Taekwondo Academy project">View project</a>
           </article>
         </li>
         <li>
           <article class="card">
-            <div class="card-img">
-              <img src="Avatar-image.avif" alt="Screenshot of the bio-enzyme recipe page showing ingredient lists and steps" decoding="async" loading="lazy">
+            <div class="card__img">
+              <img src="Avatar-image.avif" alt="Illustrated placeholder avatar" decoding="async" loading="lazy">
             </div>
             <h3>Bio-Enzyme Recipe Page</h3>
             <p>A content page practising semantic list elements, text-level semantics, and correct heading hierarchy.</p>
-            <a href="#" class="detail">View project</a>
+            <span class="card__detail card__detail--disabled" aria-disabled="true" title="Coming soon — this project needs more work">View project</span>
           </article>
         </li>
-        <li>
+        <li>    
           <article class="card">
-            <div class="card-img">
-              <img src="Avatar-image.avif" alt="Screenshot of this portfolio landing page" decoding="async"          loading="lazy">
+            <div class="card__img">
+              <img src="Avatar-image.avif" alt="Illustrated placeholder avatar" decoding="async" loading="lazy">
 
             </div>
             <h3>Portfolio — this page</h3>
             <p>A personal portfolio built with semantic HTML, accessible landmarks, and responsive CSS.</p>
-            <a href="#" class="detail">View project</a>
+            <a href="https://github.com/HimanshiAgrawal21/Portfolio" class="card__detail" aria-label="View this portfolio project">View project</a>
           </article>
         </li>
       </ul>
@@ -89,7 +92,7 @@
         <dd>Semantic markup, accessible landmarks, ARIA fundamentals, and correct element usage — from <code>aria-labelledby</code> to <code>decoding</code> on images.</dd>
 
         <dt>CSS</dt>
-        <dd>Responsive design, relative units, and <code>clamp()</code> for fluid typography. My strongest area.</dd>
+        <dd>Responsive design, relative units, and <code>clamp()</code> for fluid typography.</dd>
 
         <dt>JavaScript</dt>
         <dd>Still learning — but I have built projects using <code>async</code>/<code>await</code>, localStorage, and DOM manipulation.</dd>
@@ -99,7 +102,7 @@
     <section id="contact" class="contact constrain">
       <h2>Contact</h2>
       <p>I am currently open to freelance work and learning opportunities. Reach out via email — I would love to hear from you.</p>
-      <a class="contact-email" href="mailto:hhimanshi1921@gmail.com">hhimanshi1921@gmail.com</a>
+      <a class="contact__email" href="mailto:hhimanshi1921@gmail.com" >hhimanshi1921@gmail.com</a>
     </section>
 
   </main>
@@ -107,5 +110,13 @@
   <footer>
     <p>© 2026 Himanshi Agrawal</p>
   </footer>
+  <script>
+    const navToggle = document.querySelector('.navbar__toggle');
+    const navList = document.querySelector('#navbar__list');
+    navToggle.addEventListener('click', () => {
+  const isHidden = navList.classList.toggle('is-open');
+  navToggle.setAttribute('aria-expanded', isHidden);
+  });
+  </script>
 </body>
 </html>
